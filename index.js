@@ -10,12 +10,12 @@ const app = express();
 // Rate limiter
 const limiter = rateLimit({
   windowMs: 10 * 60 * 1000, // 1 minute
-  max: 5, // 10 requests
+  max: 10, // 10 requests
 });
 
 // Middleware
 app.use(limiter);
-app.set('trust proxy', 10);
+app.set('trust proxy', 1);
 
 // Routes
 app.use('/api', require('./routes/index'));
@@ -24,5 +24,5 @@ app.use('/api', require('./routes/index'));
 app.use(cors());
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}..`);
 });
